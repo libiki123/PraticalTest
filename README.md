@@ -16,7 +16,7 @@ Incompleted:
 - Other Bonus
 
 Noticed Bug:
-- Some soldier bug out when there are too many on the field
+- Some soldiers bugged out when there are too many on the field
 
 ## ScreenShots
 <img src="Images/ss1.png" height='400x' width='230x'/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="Images/ss2.jpg" height='400x' width='230x'/>
