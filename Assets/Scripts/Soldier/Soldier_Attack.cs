@@ -7,7 +7,7 @@ public class Soldier_Attack : Soldier
 	
 
 	public GameObject opponentGoal;
-	public ControllerManager owner;
+	public Controller owner;
 
 	[SerializeField] private GameObject ballGO;
 	[SerializeField] private float carryingSpeed = 0.75f;
@@ -30,6 +30,7 @@ public class Soldier_Attack : Soldier
 		
 		if (!isHoldingBall && ball.isAvailable)
 		{
+			Debug.Log(ball.transform.position);
 			// get the ball
 			GetToDestinationWithSpeedAndIgnoreCollision(ball.transform.position, normalSpeed);
 		}
@@ -71,7 +72,7 @@ public class Soldier_Attack : Soldier
 		{
 			if (isHoldingBall)
 			{
-				
+				Debug.Log("WIN"); //////////////////////////// TODO ///////////////////////////////
 			}
 			else
 			{
@@ -110,9 +111,12 @@ public class Soldier_Attack : Soldier
 			{
 				if (soldier != gameObject)
 				{
-					if (Vector3.Distance(transform.position, soldier.transform.position) < closestSoldierDistance)
+					if(soldier.GetComponent<Soldier_Attack>().currentState == SoldierState.ACTIVATE)
 					{
-						closestSoldier = soldier;
+						if (Vector3.Distance(transform.position, soldier.transform.position) < closestSoldierDistance)
+						{
+							closestSoldier = soldier;
+						}
 					}
 				}
 			}
@@ -124,7 +128,7 @@ public class Soldier_Attack : Soldier
 			}
 			else
 			{
-
+				Debug.Log("LOST"); //////////////////////////// TODO ///////////////////////////////
 			}
 		}
 	}

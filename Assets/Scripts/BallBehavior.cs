@@ -60,14 +60,26 @@ public class BallBehavior : MonoBehaviour
 	{
 		if(collision.gameObject.tag == "Attacker")      // wont collide if it already owned or not passing
 		{
-            myOwner = collision.gameObject.transform;
-            transform.parent = myOwner;
-			collision.gameObject.GetComponent<Soldier_Attack>().GotBall();
-            Physics.IgnoreLayerCollision(gameObject.layer, myOwner.gameObject.layer);
-			isAvailable = false;
-			isPassing = false;
+			Soldier_Attack attacker = collision.gameObject.GetComponent<Soldier_Attack>();
+			if(attacker != null)
+			{
+				if(attacker.currentState == SoldierState.ACTIVATE)
+				{
+					myOwner = collision.gameObject.transform;
+					transform.parent = myOwner;
+					collision.gameObject.GetComponent<Soldier_Attack>().GotBall();
+					Physics.IgnoreLayerCollision(gameObject.layer, myOwner.gameObject.layer);
+					isAvailable = false;
+					isPassing = false;
 
-			NotifyActiveAttackers();
+					NotifyActiveAttackers();
+				}
+			}
+		}
+
+		if(collision.gameObject.tag == "Defender")
+		{
+			Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
 		}
 	}
 

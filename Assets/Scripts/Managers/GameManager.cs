@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 	public static GameManager Instance { get; private set; }
 
 	public MatchState currentState;
+	public bool ARMode = false;
 
     [SerializeField] private int numberOfMatches = 5;
     [SerializeField] private int timeLimitPerMatch = 140;
@@ -21,8 +22,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerTextUI;
     [SerializeField] private TextMeshProUGUI macthCountTextUI;
 
-    private ControllerManager playerController;
-    private ControllerManager enemyController;
+    private Controller playerController;
+    private Controller enemyController;
 
     private int currentMatch;
 	private float startTime;
@@ -41,8 +42,8 @@ public class GameManager : MonoBehaviour
 		playerGO = GameObject.FindGameObjectWithTag("Player");
         enemyGO = GameObject.FindGameObjectWithTag("Enemy");
 
-        playerController = playerGO.GetComponent<ControllerManager>();
-        enemyController = enemyGO.GetComponent<ControllerManager>();
+        playerController = playerGO.GetComponent<Controller>();
+        enemyController = enemyGO.GetComponent<Controller>();
 	}
 
 	void Start()
@@ -58,6 +59,7 @@ public class GameManager : MonoBehaviour
 			timerTextUI.text = ((int)(Time.time - startTime)).ToString() + " s";
 			if(Time.time - startTime >= 140)
 			{
+				Debug.Log("DRAW"); //////////////////////////// TODO ///////////////////////////////
 				MatchEnded();
 			}
 		}

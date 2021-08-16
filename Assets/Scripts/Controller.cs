@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
-public class ControllerManager : MonoBehaviour
+public class Controller : MonoBehaviour
 {
     public Camera cam;
 
@@ -31,6 +31,7 @@ public class ControllerManager : MonoBehaviour
 	[SerializeField] private float maxX = 0f;
 	[SerializeField] private float minZ = 0f;
 	[SerializeField] private float maxZ = 0f;
+	[SerializeField] private LayerMask clickableMask;
 
 	[Space]
 	[SerializeField] private float energyRegen = 0.5f;
@@ -62,19 +63,38 @@ public class ControllerManager : MonoBehaviour
 		{
 			Ray ray = cam.ScreenPointToRay(Input.mousePosition);        // cast a ray from camera to mouse
 			RaycastHit hit;
-			if (Physics.Raycast(ray, out hit))		
+			if (Physics.Raycast(ray, out hit, 100f, clickableMask))
 			{
-				if (WithinRange(hit.point.x, minX, maxX) && WithinRange(hit.point.z, minZ, maxZ))		// Check if player click on their own field
-				{
-					if(currentEnergy > energyCost)
+/*				if (WithinRange(hit.point.x, minX, maxX) && WithinRange(hit.point.z, minZ, maxZ))       // Check if player click on their own field
+				{*/
+					if (currentEnergy > energyCost)
 					{
 						SpawnSoldier(hit.point);    // spawn soldier at hit location
-						currentEnergy -= energyCost;	// minus the energy cost
+						currentEnergy -= energyCost;    // minus the energy cost
 					}
-					
-				}
+
+				//}
 			}
 		}
+
+
+
+		if (GameManager.Instance.ARMode)
+		{
+			
+		}
+	}
+
+	bool TryGetTouchPosition(out Vector2 touchPosition)
+	{
+		if (Input.touchCount > 0)
+		{
+			touchPosition = Input.GetTouch(0).position;
+			return true;
+		}
+
+		touchPosition = default;
+		return false;
 	}
 
 	private void RefillEnergy()

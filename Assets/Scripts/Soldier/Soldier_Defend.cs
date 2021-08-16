@@ -27,6 +27,7 @@ public class Soldier_Defend : Soldier
 			hitColliders = Physics.OverlapSphere(transform.position, detectionRadius, soldierLayerMask);	// only check soldier layermask
 			if (hitColliders.Length != 0)
 			{
+				Transform attackerHoldingBall = null;
 				foreach (var hit in hitColliders)        // loop through all soldier hit 
 				{
 					if (hit.gameObject.tag == "Attacker")
@@ -36,12 +37,14 @@ public class Soldier_Defend : Soldier
 						{
 							if (attacker.isHoldingBall && attacker.currentState == SoldierState.ACTIVATE)
 							{
-								target = hit.gameObject.transform;
-								Activated();
+								attackerHoldingBall = attacker.transform;
 							}
 						}
 					}
 				}
+
+				target = attackerHoldingBall;
+				Activated();
 			}
 		}
 	}
@@ -58,6 +61,10 @@ public class Soldier_Defend : Soldier
 		if(target != null)
 		{
 			GetToDestinationWithSpeedAndIgnoreCollision(target.position, normalSpeed);
+		}
+		else
+		{
+			GetToDestinationWithSpeedAndIgnoreCollision(spawnedPos, returnSpeed);
 		}
 		
 	}
