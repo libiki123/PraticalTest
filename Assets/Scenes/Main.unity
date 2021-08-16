@@ -1374,7 +1374,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh463606
+  m_Name: pb_Mesh513016
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1836,7 +1836,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh464260
+  m_Name: pb_Mesh513670
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2235,7 +2235,7 @@ GameObject:
   - component: {fileID: 168606395}
   m_Layer: 8
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Fence
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -3519,7 +3519,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh464128
+  m_Name: pb_Mesh513538
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3931,7 +3931,7 @@ GameObject:
   - component: {fileID: 249804934}
   m_Layer: 8
   m_Name: Cylinder (3)
-  m_TagString: Untagged
+  m_TagString: Fence
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -9857,7 +9857,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh463570
+  m_Name: pb_Mesh512980
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11927,7 +11927,7 @@ GameObject:
   - component: {fileID: 1044158913}
   m_Layer: 8
   m_Name: Cylinder (1)
-  m_TagString: Untagged
+  m_TagString: Fence
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -26683,7 +26683,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh463934
+  m_Name: pb_Mesh513344
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -27300,7 +27300,7 @@ GameObject:
   - component: {fileID: 2054934197}
   m_Layer: 8
   m_Name: Cylinder (2)
-  m_TagString: Untagged
+  m_TagString: Fence
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
