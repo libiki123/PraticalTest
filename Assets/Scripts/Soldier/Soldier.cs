@@ -16,6 +16,7 @@ public class Soldier : MonoBehaviour
 	[SerializeField] protected float reactivateTime = 2.5f;
 	[SerializeField] protected float normalSpeed = 1.5f;
 	[SerializeField] protected ParticleSystem highlightRing;
+	[SerializeField] private Animator anim;
 
 
 	protected NavMeshAgent navMeshAgent;
@@ -23,14 +24,34 @@ public class Soldier : MonoBehaviour
 	private void Awake()
 	{
         navMeshAgent = GetComponent<NavMeshAgent>();
-		soldierBody = transform.Find("SoldierBody");
+		//soldierBody = transform.Find("SoldierBody");
+		soldierBody = transform.Find("Zombie/SoldierBody");
 		highlightRing = gameObject.GetComponentInChildren<ParticleSystem>();
+		anim = transform.Find("Zombie").GetComponent<Animator>();
 	}
 
 	protected virtual void Start()
 	{
-		soldierBody.GetComponent<MeshRenderer>().material = soldierColor;
+		ChangeSoldierMat(soldierColor);
 		StartCoroutine(OnSpawned());
+	}
+
+	void Update()
+	{
+		if(navMeshAgent.hasPath && navMeshAgent.speed != 0)
+		{
+			anim.SetBool("isMoving", true);
+		}
+		else
+		{
+			anim.SetBool("isMoving", false);
+		}
+	}
+
+	protected void ChangeSoldierMat(Material mat)
+	{
+		//soldierBody.GetComponent<MeshRenderer>().material = mat;
+		soldierBody.GetComponent<SkinnedMeshRenderer>().material = mat;
 	}
 
 	IEnumerator OnSpawned()
@@ -62,7 +83,7 @@ public class Soldier : MonoBehaviour
 	protected virtual IEnumerator InActivated()
 	{
 		yield return new WaitForSeconds(reactivateTime);
-		soldierBody.GetComponent<MeshRenderer>().material = soldierColor;
+		ChangeSoldierMat(soldierColor);
 		UpdateState(SoldierState.ACTIVATE);
 	}
 
@@ -90,4 +111,5 @@ public class Soldier : MonoBehaviour
 
 		Physics.IgnoreLayerCollision(gameObject.layer, gameObject.layer, ignoreCollision);
 	}
+
 }

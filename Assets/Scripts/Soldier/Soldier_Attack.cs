@@ -49,7 +49,7 @@ public class Soldier_Attack : Soldier
 
 	protected override IEnumerator InActivated()        // soldier behaviour during InActivate
 	{
-		soldierBody.GetComponent<MeshRenderer>().material = soldierInActivateColor;
+		ChangeSoldierMat(soldierInActivateColor);
 		GetToDestinationWithSpeedAndIgnoreCollision(Vector3.zero,0, true);
 
 		return base.InActivated();

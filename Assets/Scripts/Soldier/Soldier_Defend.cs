@@ -75,7 +75,7 @@ public class Soldier_Defend : Soldier
 		highlightRing.Stop();
 
 		target = null;
-		soldierBody.GetComponent<MeshRenderer>().material = soldierInActivateColor;
+		ChangeSoldierMat(soldierInActivateColor);
 		GetToDestinationWithSpeedAndIgnoreCollision(spawnedPos, returnSpeed, true);
 
 		return base.InActivated();

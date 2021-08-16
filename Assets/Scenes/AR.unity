@@ -12567,9 +12567,9 @@ MonoBehaviour:
   isAttacking: 0
   soldierList: []
   userColor: {fileID: 2100000, guid: b7fda482f100a4c40898533df305772b, type: 2}
-  soldierAttackPrefab: {fileID: 2815503413550255790, guid: 08ab19ee7331a234d8145d2a96130b6e,
+  soldierAttackPrefab: {fileID: 4859821170626134164, guid: 27c3670b26c8913449ee6a111011914a,
     type: 3}
-  soldierDefendPrefab: {fileID: 1729484972404358805, guid: edaafcb1799608c4c997974ec1654037,
+  soldierDefendPrefab: {fileID: 356736869408339457, guid: 31f6127c8e72fae4592dcf358e90b3f5,
     type: 3}
   energySliderUI: {fileID: 589362302722745774}
   profileTextUI: {fileID: 589362303272701046}
@@ -29212,9 +29212,9 @@ MonoBehaviour:
   isAttacking: 0
   soldierList: []
   userColor: {fileID: 2100000, guid: e1900db8efe44704bbb807b02673922c, type: 2}
-  soldierAttackPrefab: {fileID: 2815503413550255790, guid: 08ab19ee7331a234d8145d2a96130b6e,
+  soldierAttackPrefab: {fileID: 4859821170626134164, guid: 27c3670b26c8913449ee6a111011914a,
     type: 3}
-  soldierDefendPrefab: {fileID: 1729484972404358805, guid: edaafcb1799608c4c997974ec1654037,
+  soldierDefendPrefab: {fileID: 356736869408339457, guid: 31f6127c8e72fae4592dcf358e90b3f5,
     type: 3}
   energySliderUI: {fileID: 589362301612586375}
   profileTextUI: {fileID: 589362302905328619}
