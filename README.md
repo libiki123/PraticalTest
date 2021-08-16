@@ -15,8 +15,9 @@ Incompleted:
 - Penalty map
 - Other Bonus
 
-Noticed Bug:
+Noticed Bugs:
 - Some soldiers bugged out when there are too many on the field
+- When reset AR scene every match the ball game location got reset
 
 ## ScreenShots
 <img src="Images/ss1.png" height='400x' width='230x'/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="Images/ss2.jpg" height='400x' width='230x'/>
