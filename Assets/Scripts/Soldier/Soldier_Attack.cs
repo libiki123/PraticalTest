@@ -30,7 +30,6 @@ public class Soldier_Attack : Soldier
 		
 		if (!isHoldingBall && ball.isAvailable)
 		{
-			Debug.Log(ball.transform.position);
 			// get the ball
 			GetToDestinationWithSpeedAndIgnoreCollision(ball.transform.position, normalSpeed);
 		}
@@ -72,7 +71,7 @@ public class Soldier_Attack : Soldier
 		{
 			if (isHoldingBall)
 			{
-				Debug.Log("WIN"); //////////////////////////// TODO ///////////////////////////////
+				GameManager.Instance.MatchEnded(MatchResult.WON, owner);
 			}
 			else
 			{
@@ -128,7 +127,7 @@ public class Soldier_Attack : Soldier
 			}
 			else
 			{
-				Debug.Log("LOST"); //////////////////////////// TODO ///////////////////////////////
+				GameManager.Instance.MatchEnded(MatchResult.LOST, owner);
 			}
 		}
 	}

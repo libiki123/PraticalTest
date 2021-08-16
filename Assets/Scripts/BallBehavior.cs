@@ -21,6 +21,11 @@ public class BallBehavior : MonoBehaviour
 		ballRB = gameObject.GetComponent<Rigidbody>();
 	}
 
+	private void Start()
+	{
+		Physics.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Soldier"), false);
+	}
+
 	void Update()
     {
         if(myOwner != null && !isPassing)

@@ -8,11 +8,8 @@ public class AR_ButtonManager : MonoBehaviour
 {
 	ARPlaneManager arPlaneManager;
 	
-
 	[SerializeField] GameObject returnButton;
 	[SerializeField] TextMeshProUGUI togglePlaneDetectionText;
-/*	[SerializeField] GameObject ARCamera;
-	[SerializeField] GameObject NormalCamera;*/
 	[SerializeField] ARSession arSession;
 	[SerializeField] TextMeshProUGUI toggleCameraText;
 	[SerializeField] TextMeshProUGUI moveModeText;
@@ -26,6 +23,7 @@ public class AR_ButtonManager : MonoBehaviour
 
 	public void ReturnButtonPressed()
 	{
+		GameManager.Instance.ResetGame();
 		SceneManager.LoadScene("Main", LoadSceneMode.Single);
 	}
 
@@ -57,8 +55,6 @@ public class AR_ButtonManager : MonoBehaviour
 
 	public void SwitchCamera()
 	{
-		/*NormalCamera.SetActive(!NormalCamera.activeSelf);
-		ARCamera.gameObject.SetActive(!ARCamera.activeSelf);*/
 
 		if (arSession.isActiveAndEnabled)
 		{

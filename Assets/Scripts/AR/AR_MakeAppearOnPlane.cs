@@ -14,6 +14,8 @@ public class AR_MakeAppearOnPlane : MonoBehaviour
 	ARSessionOrigin m_SessionOrigin;
 	ARRaycastManager m_RaycastManager;
 
+	private static Vector3 previousContentPos = Vector3.zero;
+
 	[SerializeField]
 	[Tooltip("A transform which should be made to appear to be at the touch point.")]
 	Transform m_Content;
@@ -35,7 +37,9 @@ public class AR_MakeAppearOnPlane : MonoBehaviour
 		{
 			m_Rotation = value;
 			if (m_SessionOrigin != null)
-				m_SessionOrigin.MakeContentAppearAt(content, content.transform.position, m_Rotation);
+			{
+				m_SessionOrigin.MakeContentAppearAt(content, previousContentPos, m_Rotation);
+			}
 		}
 	}
 
@@ -58,6 +62,7 @@ public class AR_MakeAppearOnPlane : MonoBehaviour
 		{
 			var hitPose = s_Hits[0].pose;
 			m_SessionOrigin.MakeContentAppearAt(content, hitPose.position, m_Rotation);
+			previousContentPos = hitPose.position;
 		}
 	}
 }

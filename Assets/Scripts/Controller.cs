@@ -16,7 +16,7 @@ public class Controller : MonoBehaviour
 	public GameObject opponentGoal;
 
 	[HideInInspector] public int maxEnergyPoints = 6;
-	[HideInInspector] public bool isAttacking = false;
+	[HideInInspector] public bool isAttacking;
 	 public List<GameObject> soldierList = new List<GameObject>();
 
 	[Space]
@@ -27,10 +27,6 @@ public class Controller : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI profileTextUI;
 
 	[Header("Clickable Area")]
-	[SerializeField] private float minX = 0f;
-	[SerializeField] private float maxX = 0f;
-	[SerializeField] private float minZ = 0f;
-	[SerializeField] private float maxZ = 0f;
 	[SerializeField] private LayerMask clickableMask;
 
 	[Space]
@@ -42,10 +38,6 @@ public class Controller : MonoBehaviour
 	private float energyRegenPerSec = 0f;
 	private int energyCost = 0;
 
-	private void Awake()
-	{
-
-	}
 	void Start()
     {
 		List<GameObject> soldierList = new List<GameObject>();
@@ -59,42 +51,22 @@ public class Controller : MonoBehaviour
 
 	void CheckUserInput()
 	{
-		if (Input.GetMouseButtonDown(0))
+		if(GameManager.Instance.currentState == MatchState.START)
 		{
-			Ray ray = cam.ScreenPointToRay(Input.mousePosition);        // cast a ray from camera to mouse
-			RaycastHit hit;
-			if (Physics.Raycast(ray, out hit, 100f, clickableMask))
+			if (Input.GetMouseButtonDown(0))
 			{
-/*				if (WithinRange(hit.point.x, minX, maxX) && WithinRange(hit.point.z, minZ, maxZ))       // Check if player click on their own field
-				{*/
+				Ray ray = cam.ScreenPointToRay(Input.mousePosition);        // cast a ray from camera to mouse
+				RaycastHit hit;
+				if (Physics.Raycast(ray, out hit, 100f, clickableMask))
+				{
 					if (currentEnergy > energyCost)
 					{
 						SpawnSoldier(hit.point);    // spawn soldier at hit location
 						currentEnergy -= energyCost;    // minus the energy cost
 					}
-
-				//}
+				}
 			}
 		}
-
-
-
-		if (GameManager.Instance.ARMode)
-		{
-			
-		}
-	}
-
-	bool TryGetTouchPosition(out Vector2 touchPosition)
-	{
-		if (Input.touchCount > 0)
-		{
-			touchPosition = Input.GetTouch(0).position;
-			return true;
-		}
-
-		touchPosition = default;
-		return false;
 	}
 
 	private void RefillEnergy()
@@ -124,11 +96,6 @@ public class Controller : MonoBehaviour
 		}
 	}
 
-    bool WithinRange(float numberToCheck, float min, float max)
-	{
-        return numberToCheck >= min && numberToCheck <= max;
-	}
-
 	public void OnMatchStarted()
 	{
 		currentEnergy = 0;			// reset energy
@@ -140,8 +107,4 @@ public class Controller : MonoBehaviour
 		energyCost = isAttacking ? attackCost : defendCost;
 	}
 
-	public void MatchEnded()
-	{
-
-	}
 }
