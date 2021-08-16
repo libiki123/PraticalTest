@@ -2,7 +2,7 @@
 ![platform](https://img.shields.io/badge/Platform-Unity-yellow.svg)
 ![Language](https://img.shields.io/badge/Language-C%23-orange.svg)
 
-This game was created within 4 days so the code is not all pretty especially the AR and GameManager
+This game was created within 4 days so the code is not all pretty especially the for AR and GameManager code
 
 ## Tasks:
 Completed:
